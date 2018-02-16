@@ -29,6 +29,7 @@ class LocationsViewController: UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext!
 
+
     deinit {
         fetchedResultsController.delegate = nil
     }
@@ -96,6 +97,7 @@ class LocationsViewController: UITableViewController {
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let location = fetchedResultsController.object(at: indexPath)
+            location.removePhotoFile()
             managedObjectContext.delete(location)
 
             do {
